@@ -498,7 +498,7 @@ maximize.onclick = function(){
         
         win.style.width = "";
         win.style.height = "";
-        
+
         win.style.transform = "none";
 
         win.classList.add("maximized");
@@ -876,14 +876,9 @@ function showDock(){
 
 function checkDock(){
 
-
-
     const visibleWindow = windows.find(w=>
-
         !w.classList.contains("closed")
-
     );
-
 
 
     if(!visibleWindow){
@@ -895,39 +890,42 @@ function checkDock(){
     }
 
 
-
-
-
     const rect = visibleWindow.getBoundingClientRect();
 
 
+    // Fullscreen window
+    if(visibleWindow.classList.contains("maximized")){
+
+        if(dock.matches(":hover")){
+
+            showDock();
+
+        }
+        else if(!dock.matches(":hover")){
+
+            hideDock();
+
+        }
+
+        return;
+
+    }
 
 
 
     if(rect.bottom >= window.innerHeight - 60){
 
-
-
         hideDock();
-
-
 
     }
 
     else{
 
-
         showDock();
-
-
 
     }
 
-
-
-
 }
-
 
 
 
@@ -1007,29 +1005,18 @@ function showStatusBar(){
 function checkStatusBar(){
 
 
-
     const visibleWindow = windows.find(w=>
-
         !w.classList.contains("closed")
-
     );
-
 
 
     if(!visibleWindow){
 
-
         showStatusBar();
-
 
         return;
 
-
     }
-
-
-
-
 
 
 
@@ -1037,33 +1024,38 @@ function checkStatusBar(){
 
 
 
+    // Fullscreen window
+    if(visibleWindow.classList.contains("maximized")){
+
+        if(statusBar.matches(":hover")){
+
+            showStatusBar();
+
+        }
+        else{
+
+            hideStatusBar();
+
+        }
+
+        return;
+
+    }
+
 
 
     if(rect.top <= 40){
 
-
-
         hideStatusBar();
 
-
-
     }
-
     else{
-
-
 
         showStatusBar();
 
-
-
     }
 
-
-
 }
-
-
 
 
 
