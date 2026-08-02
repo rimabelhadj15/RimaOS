@@ -469,92 +469,70 @@ minimize.onclick = function(){
 
 
     // ==========================
-    // Maximize
-    // ==========================
+// Maximize
+// ==========================
+
+maximize.onclick = function(){
 
 
-
-    maximize.onclick = function(){
-
+    if(!maximized){
 
 
-        if(!maximized){
+        const rect = win.getBoundingClientRect();
 
 
+        oldPosition = {
 
-            const rect = win.getBoundingClientRect();
+            left: rect.left,
 
+            top: rect.top,
 
+            width: rect.width,
 
-            oldPosition = {
+            height: rect.height
 
-
-                left: rect.left,
-
-                top: rect.top,
-
-                width: rect.width,
-
-                height: rect.height
+        };
 
 
-            };
+        // Reset dragging position
+        
+        win.style.width = "";
+        win.style.height = "";
+        
+        win.style.transform = "none";
+
+        win.classList.add("maximized");
+
+        statusBar.classList.add("fullscreen");
 
 
-
-            win.classList.add("maximized");
-
+        maximized = true;
 
 
-            statusBar.classList.add("fullscreen");
+    }
+
+    else{
 
 
-
-            maximized = true;
-
+    win.classList.remove("maximized");
 
 
-        }
+    win.style.left = oldPosition.left + "px";
+    win.style.top = oldPosition.top + "px";
 
-        else{
-
-
-
-            win.classList.remove("maximized");
+    win.style.width = oldPosition.width + "px";
+    win.style.height = oldPosition.height + "px";
 
 
-
-            win.style.transform = "none";
-
-
-            win.style.left = oldPosition.left + "px";
-
-            win.style.top = oldPosition.top + "px";
-
-            win.style.width = oldPosition.width + "px";
-
-            win.style.height = oldPosition.height + "px";
+    statusBar.classList.remove("fullscreen");
 
 
-
-            statusBar.classList.remove("fullscreen");
-
+    maximized = false;
 
 
-            maximized = false;
+}
 
-
-
-        }
-
-
-
-    };
-
-
-
-
-
+};
 
 
 
@@ -565,25 +543,25 @@ minimize.onclick = function(){
 
 
 
-    close.onclick = function(){
+   close.onclick = function(){
+
+
+    win.remove();
+
+
+    windows = windows.filter(w=>w !== win);
+
+
+    apps[appName].window = null;
 
 
 
-        win.remove();
+    document
+    .querySelector(`[data-app="${appName}"]`)
+    .classList.remove("running");
 
 
-
-        windows = windows.filter(w=>w !== win);
-
-
-
-        apps[appName].window = null;
-
-
-
-    };
-
-
+};
 
 
 
@@ -683,6 +661,19 @@ async function openApp(appName){
             appName
 
         );
+        const dockButton = document.querySelector(
+            `.app-button[data-app="${appName}"]`
+        );
+
+
+        if(dockButton){
+
+            dockButton.classList.add("running");
+
+        }
+        document
+        .querySelector(`[data-app="${appName}"]`)
+        .classList.add("running");
 
 
 

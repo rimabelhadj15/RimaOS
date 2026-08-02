@@ -110,3 +110,49 @@
     height: 50px;
 
 }
+
+.welcome-brand {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+}
+
+
+
+.welcome-logo {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+
+}
+
+
+
+.welcome-name {
+
+    color: #3399ff;
+
+    font-size: 65px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+    position: relative;
+
+    top: 14px;
+    right : 35px;
+    
+
+}
