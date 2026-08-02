@@ -42,7 +42,8 @@ const apps = {
 
         icon: "&#9881;",
 
-        window: null
+        window: null,
+        permanent: true
 
     },
 
@@ -54,7 +55,8 @@ const apps = {
 
         icon: "&#xE756;",
 
-        window: null
+        window: null,
+        permanent: true
 
     },
 
@@ -66,8 +68,15 @@ const apps = {
 
         icon: "&#xE713;",
 
-        window: null
+        window: null,
+        permanent: true
 
+    },
+    notes: {
+    name: "Notes",
+    icon: "icons/notes.png",
+    window: null,
+    permanent: false
     }
 
 
@@ -76,9 +85,58 @@ const apps = {
 
 
 
+// ==========================
+// Create Desktop Icon
+// ==========================
+
+function createDesktopIcon(appName){
+
+    const app = apps[appName];
+
+    const icon = document.createElement("div");
+
+    icon.className = "desktop-icon";
+
+
+    let iconContent;
+
+
+    if(app.icon.includes("&#")){
+
+        iconContent = `<div class="emoji-icon">${app.icon}</div>`;
+
+    }
+    else{
+
+        iconContent = `<img src="${app.icon}">`;
+
+    }
 
 
 
+    icon.innerHTML = `
+
+        ${iconContent}
+
+        <p>${app.name}</p>
+
+    `;
+
+
+
+    icon.onclick = function(){
+
+        openApp(appName);
+
+    };
+
+
+
+    document
+    .getElementById("desktop")
+    .appendChild(icon);
+
+}
 
 // ==========================
 // Clock
@@ -547,6 +605,16 @@ maximize.onclick = function(){
 
 
     win.remove();
+    const dockIcon = document.querySelector(
+        `.dock-icon[data-app="${appName}"]`
+    );
+
+
+    if(!apps[appName].permanent && dockIcon){
+
+    dockIcon.remove();
+
+}
 
 
     windows = windows.filter(w=>w !== win);
@@ -652,15 +720,16 @@ async function openApp(appName){
 
 
 
-        const win = createWindow(
+        createWindow(
 
-            app.icon + " " + app.name,
+            app.name,
 
             html,
 
             appName
 
         );
+        addToDock(appName);
         const dockButton = document.querySelector(
             `.app-button[data-app="${appName}"]`
         );
@@ -1187,3 +1256,69 @@ window.addEventListener("load",()=>{
 
 
 });
+
+window.onload = function(){
+
+    createDesktopIcon("notes");
+    createDesktopIcon("welcome");
+
+};
+
+// ==========================
+// Add App To Dock
+// ==========================
+
+function addToDock(appName){
+
+
+    const app = apps[appName];
+
+
+    if(document.querySelector(
+        `.app-button[data-app="${appName}"]`
+    )){
+        return;
+    }
+
+
+    const icon = document.createElement("div");
+
+
+    icon.className = "dock-icon app-button";
+
+    icon.dataset.app = appName;
+
+
+    if(app.icon.includes(".png")){
+
+
+        icon.innerHTML = `
+
+            <img src="${app.icon}">
+
+        `;
+
+
+    }
+    else{
+
+
+        icon.innerHTML = app.icon;
+
+
+    }
+
+
+    icon.onclick = function(){
+
+
+        openApp(appName);
+
+
+    };
+
+
+    dock.appendChild(icon);
+
+
+}
