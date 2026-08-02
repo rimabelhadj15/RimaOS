@@ -1,0 +1,112 @@
+/* =====================================
+   Welcome App Style
+===================================== */
+
+
+.welcome-app {
+
+    text-align: center;
+
+    color: white;
+
+    padding: 10px;
+
+}
+
+
+
+
+
+.welcome-app h1 {
+
+    color: lightgreen;
+
+    font-size: 32px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+
+
+.welcome-app h2 {
+
+    color: lightblue;
+
+    margin-top: 25px;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+
+
+.welcome-app p {
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+}
+
+
+
+
+
+.welcome-app img {
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    margin: 10px;
+
+}
+
+
+
+
+
+.welcome-app a {
+
+    display: inline-block;
+
+    color: #4da6ff;
+
+    font-size: 18px;
+
+    margin: 10px;
+
+    text-decoration: none;
+
+}
+
+
+
+
+
+.welcome-app a:hover {
+
+    color: white;
+
+    text-decoration: underline;
+
+}
+
+
+
+
+
+.bottom-space {
+
+    height: 50px;
+
+}
