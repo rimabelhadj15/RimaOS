@@ -160,3 +160,40 @@
 }
 
 
+
+
+.note-actions {
+
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 30px !important;
+
+}
+
+
+.note-actions button {
+
+    width: 120px !important;
+    padding: 12px !important;
+    border-radius: 14px !important;
+    color: white !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+
+}
+
+
+.edit-note {
+
+    background: #27ae60 !important;
+
+}
+
+
+.delete-note {
+
+    background: #e74c3c !important;
+
+}

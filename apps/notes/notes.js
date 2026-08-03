@@ -45,26 +45,30 @@ function displayNotes() {
 
     
 
-    window.notes.forEach((note, index) => {
-        console.log("Card created:", note.title);
+    window.notes.slice().reverse().forEach((note)=>{
 
-        const card = document.createElement("div");
+    const index = window.notes.indexOf(note);
 
-        card.className = "note-card";
+    const card = document.createElement("div");
 
-        card.innerHTML = `
-            <h3>${note.title}</h3>
-            <p>${note.date}</p>
-        `;
+    card.className = "note-card";
 
-        card.onclick = function () {
-            console.log("CARD CLICKED", index);
-            openNote(index);
-        };
+    card.innerHTML = `
+        <h3>${note.title}</h3>
+        <p>${note.date}</p>
+    `;
 
-        notesList.appendChild(card);
 
-    });
+    card.onclick = function(){
+
+        openNote(index);
+
+    };
+
+
+    notesList.appendChild(card);
+
+});
 
 }
 
@@ -112,7 +116,6 @@ saveButton.onclick = function () {
 // ==========================
 
 function openNote(index) {
-    alert("NEW OPEN NOTE");
 
     const note = window.notes[index];
 
@@ -122,26 +125,89 @@ function openNote(index) {
 
     noteWindow.innerHTML = `
         <div class="note-popup-header">
+
             <h2>${note.title}</h2>
 
             <button class="close-note">✕</button>
+
         </div>
 
+
         <div class="note-popup-content">
+
             ${note.content.replace(/\n/g,"<br>")}
+
+        </div>
+
+
+        <div class="note-actions">
+
+            <button class="edit-note">
+                ✏ Edit
+            </button>
+
+
+            <button class="delete-note">
+                🗑 Delete
+            </button>
+
         </div>
     `;
 
+
     document.body.appendChild(noteWindow);
 
-    noteWindow.querySelector(".close-note").onclick = function () {
+
+
+    // Close button
+
+    noteWindow.querySelector(".close-note").onclick = function(){
+
         noteWindow.remove();
+
     };
 
+
+
+    // Edit button
+
+    noteWindow.querySelector(".edit-note").onclick = function(){
+
+        titleInput.value = note.title;
+
+        contentInput.value = note.content;
+
+
+        noteWindow.remove();
+
+    };
+
+
+
+    // Delete button
+
+    noteWindow.querySelector(".delete-note").onclick = function(){
+
+
+        window.notes.splice(index,1);
+
+
+        localStorage.setItem(
+            "rima_notes",
+            JSON.stringify(window.notes)
+        );
+
+
+        noteWindow.remove();
+
+
+        displayNotes();
+
+
+    };
+
+
 }
-
-
-
 
 // ==========================
 // Start App
