@@ -1,7 +1,7 @@
 // ======================================
 // RimaOS Notes App
 // ======================================
-
+console.log("Notes.js loaded");
 console.log("Notes loaded");
 
 
@@ -27,6 +27,7 @@ const contentInput = document.getElementById("note-content");
 const saveButton = document.getElementById("save-note");
 
 const notesList = document.getElementById("notes-list");
+console.log("notesList:", notesList);
 
 
 
@@ -36,10 +37,16 @@ const notesList = document.getElementById("notes-list");
 // ==========================
 
 function displayNotes() {
+    console.log("DISPLAY NOTES START");
+
+    console.log("notesList =", document.getElementById("notes-list"));
 
     notesList.innerHTML = "";
 
+    
+
     window.notes.forEach((note, index) => {
+        console.log("Card created:", note.title);
 
         const card = document.createElement("div");
 
@@ -51,6 +58,7 @@ function displayNotes() {
         `;
 
         card.onclick = function () {
+            console.log("CARD CLICKED", index);
             openNote(index);
         };
 
@@ -103,17 +111,32 @@ saveButton.onclick = function () {
 // Open Full Note
 // ==========================
 
-function openNote(index){
-
+function openNote(index) {
+    alert("NEW OPEN NOTE");
 
     const note = window.notes[index];
 
+    const noteWindow = document.createElement("div");
 
-    titleInput.value = note.title;
+    noteWindow.className = "note-popup";
 
+    noteWindow.innerHTML = `
+        <div class="note-popup-header">
+            <h2>${note.title}</h2>
 
-    contentInput.value = note.content;
+            <button class="close-note">✕</button>
+        </div>
 
+        <div class="note-popup-content">
+            ${note.content.replace(/\n/g,"<br>")}
+        </div>
+    `;
+
+    document.body.appendChild(noteWindow);
+
+    noteWindow.querySelector(".close-note").onclick = function () {
+        noteWindow.remove();
+    };
 
 }
 

@@ -93,3 +93,70 @@
     gap: 12px;
 
 }
+
+
+.note-popup{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:500px;
+
+    max-height:70vh;
+
+    overflow:auto;
+
+    background:#202124;
+
+    color:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    z-index:99999;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+
+}
+
+.note-popup-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.note-popup-content{
+
+    white-space:pre-wrap;
+
+    line-height:1.6;
+
+}
+
+.close-note{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
