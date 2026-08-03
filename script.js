@@ -624,9 +624,16 @@ maximize.onclick = function(){
 
 
 
-    document
-    .querySelector(`[data-app="${appName}"]`)
-    .classList.remove("running");
+    const button = document.querySelector(
+         `[data-app="${appName}"]`
+    );
+
+
+    if(button){
+
+        button.classList.remove("running");
+
+    }
 
 
 };
@@ -762,15 +769,14 @@ async function openApp(appName){
 
 
 
-        css.href =
-
-        `apps/${appName}/${appName}.css`;
+        css.href =`apps/${appName}/${appName}.css`;
 
 
 
         document.head.appendChild(css);
 
 
+        
 
 
 
@@ -781,17 +787,17 @@ async function openApp(appName){
 
 
 
-        const js = document.createElement("script");
+        if(!document.querySelector(`script[src="apps/${appName}/${appName}.js"]`)){
 
 
+            const js = document.createElement("script");
 
-        js.src =
+            js.src = `apps/${appName}/${appName}.js`;
 
-        `apps/${appName}/${appName}.js`;
+            document.body.appendChild(js);
 
 
-
-        document.body.appendChild(js);
+        }
 
 
 
