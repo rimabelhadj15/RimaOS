@@ -360,7 +360,7 @@ function createWindow(title,content,appName){
 
         win.querySelector(".window-content").style.display = "flex";
         win.querySelector(".window-content").style.justifyContent = "center";
-        win.querySelector(".window-content").style.alignItems = "center";
+       
 
     }
 
