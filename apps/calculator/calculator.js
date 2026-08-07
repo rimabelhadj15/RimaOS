@@ -7,22 +7,18 @@ const display = document.getElementById("calc-display");
 document.querySelectorAll(".calculator-buttons button")
 .forEach(button=>{
 
-
     button.onclick=function(){
 
-
-        let value=this.innerText;
-
+        let value = this.innerText;
 
 
-        if(value==="C"){
+        if(value === "C"){
 
-            display.value="";
+            display.value = "";
 
         }
 
-
-        else if(value==="="){
+        else if(value === "="){
 
             try{
 
@@ -32,12 +28,11 @@ document.querySelectorAll(".calculator-buttons button")
 
             catch{
 
-                display.value="Error";
+                display.value = "Error";
 
             }
 
         }
-
 
         else{
 
@@ -45,8 +40,6 @@ document.querySelectorAll(".calculator-buttons button")
 
         }
 
-
     };
-
 
 });
