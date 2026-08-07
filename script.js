@@ -356,6 +356,13 @@ function createWindow(title,content,appName){
 
 
     focusWindow(win);
+    if(appName === "calculator"){
+
+        win.querySelector(".window-content").style.display = "flex";
+        win.querySelector(".window-content").style.justifyContent = "center";
+        win.querySelector(".window-content").style.alignItems = "center";
+
+    }
 
 
 
