@@ -420,6 +420,13 @@ body {
 }
 
 
+.window.calculator-window {
+
+    width: 350px;
+
+    height: 450px;
+
+}
 
 
 
@@ -504,7 +511,7 @@ body {
 
 
 
-.buttons {
+.window-buttons {
 
     display: flex;
 
@@ -516,7 +523,7 @@ body {
 
 
 
-.buttons button {
+.window-buttons button {
 
     width: 25px;
 
@@ -538,7 +545,7 @@ body {
 
 
 
-.buttons button:hover {
+.window-buttons button:hover {
 
     transform: scale(1.15);
 

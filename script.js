@@ -72,6 +72,16 @@ const apps = {
         permanent: true
 
     },
+    calculator: {
+
+    name: "Calculator",
+
+    icon: "icons/calculator.png",
+
+    window: null,
+    permanent:false 
+
+},
     notes: {
     name: "Notes",
     icon: "icons/notes.png",
@@ -269,7 +279,7 @@ function createWindow(title,content,appName){
 
 
 
-            <div class="buttons">
+            <div class="window-buttons">
 
 
                 <button class="minimize">
@@ -679,24 +689,13 @@ async function openApp(appName){
 
     if(app.window){
 
+        app.window.style.display = "flex";
 
-
-        if(app.window.classList.contains("closed")){
-
-
-            app.window.classList.remove("closed");
-
-
-        }
-
-
+        app.window.classList.remove("closed");
 
         focusWindow(app.window);
 
-
-
         return;
-
 
     }
 
@@ -1267,6 +1266,7 @@ window.onload = function(){
 
     createDesktopIcon("notes");
     createDesktopIcon("welcome");
+    createDesktopIcon("calculator");
 
 };
 
