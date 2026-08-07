@@ -1,0 +1,55 @@
+.settings-app{
+
+    color:white;
+
+    padding:20px;
+
+}
+
+
+.settings-section{
+
+    margin-bottom:20px;
+
+    padding:15px;
+
+    background:rgba(255,255,255,0.1);
+
+    border-radius:15px;
+
+}
+
+
+
+.wallpapers{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+
+.wallpaper-option{
+
+    padding:10px 15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.2);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+.wallpaper-option:hover{
+
+    background:rgba(255,255,255,0.35);
+
+}
