@@ -1,55 +1,79 @@
-.settings-app{
+.wallpapers {
 
-    color:white;
+    display: grid;
 
-    padding:20px;
+    grid-template-columns: repeat(3, 1fr);
 
-}
-
-
-.settings-section{
-
-    margin-bottom:20px;
-
-    padding:15px;
-
-    background:rgba(255,255,255,0.1);
-
-    border-radius:15px;
+    gap: 12px;
 
 }
 
 
+.wallpaper-option {
 
-.wallpapers{
+    height: 70px;
 
-    display:flex;
+    border: none;
 
-    gap:10px;
+    border-radius: 14px;
 
-}
+    color: white;
 
+    font-size: 14px;
 
+    font-weight: 600;
 
-.wallpaper-option{
+    cursor: pointer;
 
-    padding:10px 15px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,0.2);
-
-    color:white;
-
-    cursor:pointer;
+    transition: transform .2s, opacity .2s;
 
 }
 
 
-.wallpaper-option:hover{
+.wallpaper-option:hover {
 
-    background:rgba(255,255,255,0.35);
+    transform: scale(1.04);
+
+    opacity: .85;
+
+}
+
+
+.wallpaper-option[data-wall="current"] {
+
+    background: linear-gradient(
+        135deg,
+        #111,
+        #444,
+        #111
+    );
+
+}
+
+
+.wallpaper-option[data-wall="black"] {
+
+    background: #000;
+
+}
+
+
+.wallpaper-option[data-wall="blue"] {
+
+    background: #071a3d;
+
+}
+
+
+.wallpaper-option[data-wall="green"] {
+
+    background: #062b1b;
+
+}
+
+
+.wallpaper-option[data-wall="purple"] {
+
+    background: #210b35;
 
 }

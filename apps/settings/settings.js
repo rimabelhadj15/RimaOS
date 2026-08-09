@@ -6,33 +6,39 @@ const desktop = document.getElementById("desktop");
 
 const wallpapers = {
 
-    wall1:
-    "linear-gradient(135deg,#0066ff,#001a33)",
+    current: "",
 
+    black: "#000000",
 
-    wall2:
-    "linear-gradient(135deg,#8000ff,#220033)",
+    blue: "#071a3d",
 
+    green: "#062b1b",
 
-    wall3:
-    "linear-gradient(135deg,#000428,#004e92)"
+    purple: "#210b35"
 
 };
 
 
-
 document.querySelectorAll(".wallpaper-option")
-.forEach(button=>{
+.forEach(button => {
 
-
-    button.onclick=function(){
-
+    button.onclick = function () {
 
         const selected = this.dataset.wall;
 
 
-        desktop.style.background =
-        wallpapers[selected];
+        if (selected === "current") {
+
+            desktop.style.background = "";
+
+        }
+
+        else {
+
+            desktop.style.background =
+                wallpapers[selected];
+
+        }
 
 
         localStorage.setItem(
@@ -40,21 +46,19 @@ document.querySelectorAll(".wallpaper-option")
             selected
         );
 
-
     };
-
 
 });
 
 
+const savedWallpaper =
+    localStorage.getItem("rima_wallpaper");
 
-const saved =
-localStorage.getItem("rima_wallpaper");
 
-
-if(saved){
+if (savedWallpaper &&
+    savedWallpaper !== "current") {
 
     desktop.style.background =
-    wallpapers[saved];
+        wallpapers[savedWallpaper];
 
 }

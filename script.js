@@ -793,8 +793,12 @@ async function openApp(appName){
 
 
 
-        if(!document.querySelector(`script[src="apps/${appName}/${appName}.js"]`)){
+        const existingScript =
+            document.querySelector(
+                `script[src="apps/${appName}/${appName}.js"]`
+            );
 
+        if (!existingScript) {
 
             const js = document.createElement("script");
 
@@ -802,9 +806,12 @@ async function openApp(appName){
 
             document.body.appendChild(js);
 
+        }
+        else if (appName === "terminal" && typeof startTerminal === "function") {
+
+            startTerminal();
 
         }
-
 
 
 
