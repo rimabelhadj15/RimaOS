@@ -1,64 +1,251 @@
 console.log("Settings loaded");
 
 
-const desktop = document.getElementById("desktop");
+function startSettings() {
+
+    const desktop =
+        document.getElementById("desktop");
 
 
-const wallpapers = {
+    if (!desktop) {
 
-    current: "",
+        console.error("Desktop not found");
 
-    black: "#000000",
+        return;
 
-    blue: "#071a3d",
-
-    green: "#062b1b",
-
-    purple: "#210b35"
-
-};
+    }
 
 
-document.querySelectorAll(".wallpaper-option")
-.forEach(button => {
-
-    button.onclick = function () {
-
-        const selected = this.dataset.wall;
+    console.log("Settings initialized");
 
 
-        if (selected === "current") {
+    // ==========================
+    // Wallpaper
+    // ==========================
 
-            desktop.style.background = "";
+    const wallpaperButtons =
+        document.querySelectorAll(
+            ".wallpaper-option"
+        );
+
+
+    function applyWallpaper(name) {
+
+        desktop.style.background = "";
+
+
+        if (name === "black") {
+
+            desktop.style.background = "#000000";
 
         }
 
-        else {
+        else if (name === "blue") {
 
-            desktop.style.background =
-                wallpapers[selected];
+            desktop.style.background = "#123b70";
 
         }
 
+        else if (name === "green") {
+
+            desktop.style.background = "#123d2a";
+
+        }
+
+        else if (name === "purple") {
+
+            desktop.style.background = "#42206b";
+
+        }
+
+
+        wallpaperButtons.forEach(button => {
+
+            button.classList.remove("active");
+
+        });
+
+
+        const selected =
+            document.querySelector(
+                `[data-wall="${name}"]`
+            );
+
+
+        if (selected) {
+
+            selected.classList.add("active");
+
+        }
+
+    }
+
+
+    wallpaperButtons.forEach(button => {
+
+        button.onclick = function() {
+
+            const wallpaper =
+                this.dataset.wall;
+
+            localStorage.setItem(
+                "rimaos_wallpaper",
+                wallpaper
+            );
+
+            applyWallpaper(wallpaper);
+
+        };
+
+    });
+
+
+    const savedWallpaper =
+        localStorage.getItem(
+            "rimaos_wallpaper"
+        );
+
+
+    applyWallpaper(
+        savedWallpaper || "current"
+    );
+
+
+    // ==========================
+    // Theme
+    // ==========================
+
+    const themeSelect =
+        document.getElementById(
+            "theme-select"
+        );
+
+
+    function applyTheme(theme) {
+
+        document.body.dataset.theme =
+            theme;
 
         localStorage.setItem(
-            "rima_wallpaper",
-            selected
+            "rimaos_theme",
+            theme
         );
+
+    }
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "rimaos_theme"
+        ) || "dark";
+
+
+    themeSelect.value =
+        savedTheme;
+
+    applyTheme(savedTheme);
+
+
+    themeSelect.onchange = function() {
+
+        applyTheme(this.value);
 
     };
 
-});
+
+    // ==========================
+    // Terminal Color
+    // ==========================
+
+    const terminalColor =
+        document.getElementById(
+            "terminal-color"
+        );
 
 
-const savedWallpaper =
-    localStorage.getItem("rima_wallpaper");
+    const savedTerminalColor =
+        localStorage.getItem(
+            "rimaos_terminal_color"
+        ) || "#00ff88";
 
 
-if (savedWallpaper &&
-    savedWallpaper !== "current") {
+    terminalColor.value =
+        savedTerminalColor;
 
-    desktop.style.background =
-        wallpapers[savedWallpaper];
+
+    terminalColor.oninput = function() {
+
+        localStorage.setItem(
+            "rimaos_terminal_color",
+            this.value
+        );
+
+
+        document.documentElement.style
+            .setProperty(
+                "--terminal-color",
+                this.value
+            );
+
+    };
+
+
+    document.documentElement.style
+        .setProperty(
+            "--terminal-color",
+            savedTerminalColor
+        );
+
+
+    // ==========================
+    // Time Format
+    // ==========================
+
+    const timeFormat =
+        document.getElementById(
+            "time-format"
+        );
+
+
+    const savedTimeFormat =
+        localStorage.getItem(
+            "rimaos_time_format"
+        ) || "24";
+
+
+    timeFormat.value =
+        savedTimeFormat;
+
+
+    timeFormat.onchange = function() {
+
+        localStorage.setItem(
+            "rimaos_time_format",
+            this.value
+        );
+
+        if (typeof updateTime === "function") {
+
+            updateTime();
+
+        }
+
+    };
+
+}
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        startSettings
+    );
+
+}
+
+else {
+
+    startSettings();
 
 }

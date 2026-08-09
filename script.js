@@ -153,38 +153,62 @@ function createDesktopIcon(appName){
 // ==========================
 
 
-function updateTime(){
-
+function updateTime() {
 
     const time = document.getElementById("time");
 
-
-
-    if(!time){
-
+    if (!time) {
         return;
-
     }
-
-
 
     const now = new Date();
 
+    const format =
+        localStorage.getItem("rimaos_time_format") || "24";
 
 
-    time.textContent =
+    if (format === "12") {
 
-    now.getHours().toString().padStart(2,"0")
+        let hours = now.getHours();
 
-    + ":"
+        const minutes =
+            now.getMinutes()
+            .toString()
+            .padStart(2, "0");
 
-    +
+        const period =
+            hours >= 12 ? "PM" : "AM";
 
-    now.getMinutes().toString().padStart(2,"0");
+        hours = hours % 12;
 
+        if (hours === 0) {
+            hours = 12;
+        }
+
+        time.textContent =
+            hours.toString().padStart(2, "0")
+            + ":"
+            + minutes
+            + " "
+            + period;
+
+    }
+
+    else {
+
+        time.textContent =
+            now.getHours()
+            .toString()
+            .padStart(2, "0")
+            + ":"
+            +
+            now.getMinutes()
+            .toString()
+            .padStart(2, "0");
+
+    }
 
 }
-
 
 
 
@@ -742,6 +766,7 @@ async function openApp(appName){
             appName
 
         );
+        
         addToDock(appName);
         const dockButton = document.querySelector(
             `.app-button[data-app="${appName}"]`
@@ -802,25 +827,38 @@ async function openApp(appName){
 
             const js = document.createElement("script");
 
-            js.src = `apps/${appName}/${appName}.js`;
+            js.src =
+                `apps/${appName}/${appName}.js`;
 
             document.body.appendChild(js);
 
         }
-        else if (appName === "terminal" && typeof startTerminal === "function") {
+        else if (
+            appName === "settings" &&
+            typeof startSettings === "function"
+        ) {
+
+            startSettings();
+
+        }
+        else if (
+            appName === "terminal" &&
+            typeof startTerminal === "function"
+        ) {
 
             startTerminal();
 
         }
 
+        else if (
+            appName === "settings" &&
+            typeof startSettings === "function"
+        ) {
 
+            startSettings();
 
-
-
-
+        }
     }
-
-
     catch(error){
 
 

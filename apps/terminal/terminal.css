@@ -6,7 +6,7 @@
     padding: 12px;
 
     background: #000;
-    color: #f2f2f2;
+     color: var(--terminal-color, #00ff88);
 
     font-family: "Cascadia Code", "Consolas", monospace;
     font-size: 15px;
@@ -39,7 +39,7 @@
 }
 
 .terminal-prompt {
-    color: #00ff88;
+    color: var(--terminal-color, #00ff88);
     white-space: nowrap;
     margin-right: 8px;
 }
@@ -52,7 +52,8 @@
 
     background: transparent;
 
-    color: white;
+    color: var(--terminal-color, #00ff88);
+    caret-color: var(--terminal-color, #00ff88);
 
     font-family: "Cascadia Code", "Consolas", monospace;
     font-size: 15px;

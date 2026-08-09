@@ -2,38 +2,91 @@
 
     <h2>⚙️ Settings</h2>
 
+    <div class="settings-section">
+
+        <h3>Appearance</h3>
+
+        <p>Choose your wallpaper</p>
+
+        <div class="wallpapers">
+
+            <button
+                class="wallpaper-option"
+                data-wall="current">
+                Default
+            </button>
+
+            <button
+                class="wallpaper-option"
+                data-wall="black">
+                Black
+            </button>
+
+            <button
+                class="wallpaper-option"
+                data-wall="blue">
+                Blue
+            </button>
+
+            <button
+                class="wallpaper-option"
+                data-wall="green">
+                Dark Green
+            </button>
+
+            <button
+                class="wallpaper-option"
+                data-wall="purple">
+                Purple
+            </button>
+
+        </div>
+        
+
+    </div>
+    
 
     <div class="settings-section">
 
-    <h3>Wallpaper</h3>
+        <h3>Terminal</h3>
 
-    <div class="wallpapers">
+        <div class="setting-row">
 
-        <button class="wallpaper-option" data-wall="current">
-            Current
-        </button>
+            <span>Terminal text color</span>
 
-        <button class="wallpaper-option" data-wall="black">
-            Black
-        </button>
+            <input
+                type="color"
+                id="terminal-color"
+                value="#00ff88">
 
-        <button class="wallpaper-option" data-wall="blue">
-            Blue
-        </button>
-
-        <button class="wallpaper-option" data-wall="green">
-            Dark Green
-        </button>
-
-        <button class="wallpaper-option" data-wall="purple">
-            Purple
-        </button>
+        </div>
 
     </div>
 
-</div>
 
+    <div class="settings-section">
 
+        <h3>Clock</h3>
+
+        <div class="setting-row">
+
+            <span>Time format</span>
+
+            <select id="time-format">
+
+                <option value="24">
+                    24-hour
+                </option>
+
+                <option value="12">
+                    12-hour
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
 
     <div class="settings-section">
 
@@ -46,6 +99,5 @@
         </p>
 
     </div>
-
 
 </div>
