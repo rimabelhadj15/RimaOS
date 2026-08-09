@@ -87,8 +87,19 @@ const apps = {
     icon: "icons/notes.png",
     window: null,
     permanent: false
-    }
+    },
+    roboticsQuiz: {
 
+    name: "Robotics Quiz",
+
+    icon: "&#129302;",
+
+    window: null,
+
+    permanent: false
+
+    }
+ 
 
 
 };
@@ -1316,9 +1327,17 @@ window.addEventListener("load",()=>{
 
 window.onload = function(){
 
-    createDesktopIcon("notes");
+    // First row
     createDesktopIcon("welcome");
+    createDesktopIcon("notes");
     createDesktopIcon("calculator");
+
+
+    // Second row
+
+    createDesktopIcon("settings");
+    createDesktopIcon("terminal");
+    createDesktopIcon("roboticsQuiz");
 
 };
 

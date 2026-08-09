@@ -1,0 +1,142 @@
+<div class="robotics-quiz">
+
+    <!-- ==========================
+         INTRO SCREEN
+    =========================== -->
+
+    <div id="quiz-intro" class="quiz-screen active">
+
+        <div class="robot-icon">🤖</div>
+
+        <h1>Robotics Quiz</h1>
+
+        <h2>Are you good enough in robotics?</h2>
+
+        <p>
+            Do you think you know many things
+            about robotics?
+        </p>
+
+        <p>
+            Let's try this quick quiz
+            and see how you do!
+        </p>
+
+        <button id="start-quiz">
+            Start Quiz
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+         QUESTION SCREEN
+    =========================== -->
+
+    <div id="quiz-question" class="quiz-screen">
+
+        <div class="quiz-progress">
+            Question <span id="question-number">1</span>
+            /
+            <span id="total-questions">10</span>
+        </div>
+
+        <h2 id="question-text">
+            Question goes here
+        </h2>
+
+        <div id="answers">
+
+            <button class="answer" data-answer="A">
+                A. Answer
+            </button>
+
+            <button class="answer" data-answer="B">
+                B. Answer
+            </button>
+
+            <button class="answer" data-answer="C">
+                C. Answer
+            </button>
+
+            <button class="answer" data-answer="D">
+                D. Answer
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+         RESULT SCREEN
+    =========================== -->
+
+    <div id="quiz-result" class="quiz-screen">
+
+        <div id="result-icon">
+            ✓
+        </div>
+
+        <h1 id="result-title">
+            Correct!
+        </h1>
+
+        <p id="result-message">
+            Good job!
+        </p>
+
+        <div class="explanation">
+
+            <p id="explanation-text">
+                Explanation
+            </p>
+
+            <p>
+                <strong>
+                    Correct answer:
+                </strong>
+
+                <span id="correct-answer">
+                </span>
+            </p>
+
+        </div>
+
+        <button id="next-question">
+            Next Question
+        </button>
+
+    </div>
+
+
+    <!-- ==========================
+         FINAL SCREEN
+    =========================== -->
+
+    <div id="quiz-final" class="quiz-screen">
+
+    <div class="robot-icon">
+        🤖
+    </div>
+
+    <h1>Quiz Complete!</h1>
+
+    <p>You finished the Robotics Quiz.</p>
+
+    <p>Your score:</p>
+
+    <div id="final-score">
+        0 / 10
+    </div>
+
+    <h2 id="final-level">
+        Robotics Enthusiast
+    </h2>
+
+    <button id="restart-quiz">
+        Try Again
+    </button>
+
+</div>
+</div>

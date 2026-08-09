@@ -1176,7 +1176,7 @@ img {
 
     user-select: none;
 
-    margin: 20px;
+    margin: 5px;
 
 }
 
@@ -1223,6 +1223,7 @@ img {
 }
 
 .emoji-icon {
+    font-family: "Segoe MDL2 Assets";
 
     font-size: 50px;
 
@@ -1467,5 +1468,21 @@ img {
     background: rgba(255,255,255,0.3);
 
     border-radius: 10px;
+
+}
+
+#desktop {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-content: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 0px;
+
+    padding: 0px;
 
 }
