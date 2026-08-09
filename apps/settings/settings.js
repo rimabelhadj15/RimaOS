@@ -111,47 +111,6 @@ function startSettings() {
     );
 
 
-    // ==========================
-    // Theme
-    // ==========================
-
-    const themeSelect =
-        document.getElementById(
-            "theme-select"
-        );
-
-
-    function applyTheme(theme) {
-
-        document.body.dataset.theme =
-            theme;
-
-        localStorage.setItem(
-            "rimaos_theme",
-            theme
-        );
-
-    }
-
-
-    const savedTheme =
-        localStorage.getItem(
-            "rimaos_theme"
-        ) || "dark";
-
-
-    themeSelect.value =
-        savedTheme;
-
-    applyTheme(savedTheme);
-
-
-    themeSelect.onchange = function() {
-
-        applyTheme(this.value);
-
-    };
-
 
     // ==========================
     // Terminal Color
